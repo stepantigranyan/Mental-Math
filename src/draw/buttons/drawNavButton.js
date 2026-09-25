@@ -14,7 +14,7 @@ const drawNavButton = (id, text) => {
             'shadow-black',
             'transition-colors',
             'duration-200',
-            'hover:bg-amber-700',
+            'hover:bg-indigo-700',
             'hover:text-white',
             'disabled:bg-gray-500',
             'disabled:text-black'

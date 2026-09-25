@@ -2,12 +2,8 @@ import drawWrapper from '../wrapper/drawWrapper.js';
 import drawPageTitle from '../title/drawPageTitle.js';
 import drawNavButton from '../buttons/drawNavButton.js';
 
-import navigation from '../../navigation/navigation.js';
-
-const landingPage = document.getElementById('landing-page');
-
 // Draw Landing Page
-const drawLandingPage = () => {
+const drawLandingPage = (fn) => {
     const wrapper = drawWrapper();
     const title = drawPageTitle('Mental Math');
 
@@ -17,12 +13,12 @@ const drawLandingPage = () => {
 
     buttonContainer.append(button);
 
-    button.addEventListener('click', navigation.toModesPage);
+    button.addEventListener('click', fn);
 
     wrapper.append(title);
     wrapper.append(buttonContainer);
 
-    landingPage.append(wrapper)
+    return wrapper;
 };
 
 export default drawLandingPage;

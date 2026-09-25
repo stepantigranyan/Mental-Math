@@ -1,22 +1,22 @@
-// Draw Mode Button 
-const drawModeButton = (id, text) => {
+// Draw Difficulty Button
+const drawDiffButton = (id, text) => {
     const label = document.createElement('label');
     label.setAttribute('for', id);
     label.setAttribute('data-id', id);
-    
+
     label.classList.add(
         'cursor-pointer',
-        'px-5',
-        'py-3',
+        'px-3',
+        'py-1',
         'rounded-xl',
         'bg-white',
         'shadow-lg',
         'shadow-black',
         'transition-colors',
         'duration-200',
-        'hover:bg-amber-700',
+        'hover:bg-purple-700',
         'hover:text-white',
-        'has-checked:bg-amber-700',
+        'has-checked:bg-purple-700',
         'has-checked:text-white'
     );
 
@@ -27,7 +27,7 @@ const drawModeButton = (id, text) => {
     const input = document.createElement('input');
     input.setAttribute('id', id);
     input.setAttribute('type', 'radio');
-    input.setAttribute('name', 'mode');
+    input.setAttribute('name', 'diff');
     input.classList.add('hidden');
 
     label.append(span);
@@ -36,4 +36,4 @@ const drawModeButton = (id, text) => {
     return label
 };
 
-export default drawModeButton;
+export default drawDiffButton;

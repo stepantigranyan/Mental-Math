@@ -13,10 +13,12 @@ const shuffle = (arr) => {
 class Settings {
     #numbers;
     #interval;
+    #personAnswer;
 
-    constructor({ interval, singleDigit, twoDigit }) {
+    constructor(singleDigit, twoDigit, interval) {
         this.#interval = interval;
         this.#numbers = this._initNumbers(singleDigit, twoDigit);
+        this.#personAnswer = NaN;
     }
 
     _initNumbers(singleDigit, twoDigit) {
@@ -41,9 +43,16 @@ class Settings {
     }
 
     getNumbers() {
-        const dublicate = this.#numbers.map((number) => number);
-        return dublicate;
+        return this.#numbers.map((number) => number);
     }
-};
+
+    getPersonAnswer() {
+        return this.#personAnswer;
+    }
+
+    setPersonAnswer(number) {
+        this.#personAnswer = number;
+    }
+}
 
 export default Settings;
