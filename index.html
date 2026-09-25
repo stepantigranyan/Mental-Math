@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./src/style.css" />
+        <title>Mental Math</title>
+    </head>
+    <body>
+        <main class="h-screen bg-[url(./imgs/background.jpg)] bg-cover bg-no-repeat flex justify-center items-center">
+			<div class="size-[80%] border border-solid border-white bg-black/30 rounded-2xl flex justify-center items-center">
+
+				<section id="landing-page" class="">
+					<!-- <div class="flex flex-col gap-y-5 items-center">
+						<h1 class="text-4xl text-white text-shadow-lg text-shadow-black">Mental Math</h1>
+						<div>
+							<button id="get-started-button" class="cursor-pointer outline-none px-5 py-3 rounded-xl bg-white shadow-lg shadow-black transition-colors duration-200 hover:bg-amber-500 hover:text-white">Get Started</button>
+						</div>
+					</div> -->
+				</section>
+
+				<section id="modes-page" class="hidden">
+					<!-- <div class="flex flex-col gap-y-5 items-center">
+						<h2 class="text-3xl text-white text-shadow-lg text-shadow-black">Choose game mode</h2>
+						<div class="flex justify-center gap-x-5">
+							<label for="ease-mode-button" class="cursor-pointer px-5 py-3 rounded-xl bg-white shadow-lg shadow-black transition-colors duration-200 hover:bg-amber-500 hover:text-white has-checked:bg-amber-700 has-checked:text-white">
+								<span class="text-sm">Ease Mode</span>
+								<input id="ease-mode-button" name="mode" type="radio" class="hidden"/>
+							</label>
+							<label for="medium-mode-button" class="cursor-pointer px-5 py-3 rounded-xl bg-white shadow-lg shadow-black transition-colors duration-200 hover:bg-amber-500 hover:text-white has-checked:bg-amber-700 has-checked:text-white">
+								<span class="text-sm">Medium Mode</span>
+								<input id="medium-mode-button" name="mode" type="radio" class="hidden"/>
+							</label>
+							<label for="hard-mode-button" class="cursor-pointer px-5 py-3 rounded-xl bg-white shadow-lg shadow-black transition-colors duration-200 hover:bg-amber-500 hover:text-white has-checked:bg-amber-700 has-checked:text-white">
+								<span class="text-sm">Hard Mode</span>
+								<input id="hard-mode-button" name="mode" type="radio" class="hidden"/>
+							</label>
+						</div>
+						<div>
+							<button id="start-button" class="cursor-pointer outline-none px-5 py-3 rounded-xl bg-white shadow-lg shadow-black transition-colors duration-200 hover:bg-amber-700 hover:text-white disabled:bg-gray-500 disabled:text-black">Start</button>
+						</div>
+					</div> -->
+				</section>
+
+				<section id="main-page" class="hidden">
+					<div class="flex flex-col gap-y-5 items-center">
+						<span id="timer-container" class="text-white text-7xl">3</span>
+						<span id="number-container" class="text-white text-7xl">8</span>
+					</div>
+				</section>
+
+
+				<section id="answer-page" class="hidden">
+					<div class="flex flex-col gap-y-5 items-center">
+						<h2 class="text-3xl text-white text-shadow-lg text-shadow-black">Your answer</h2>
+						<div>
+							<label for="answer-input">
+								<input id="answer-input" type="number" class="outline-none px-5 py-2 border border-white border-solid rounded-xl text-white">
+							</label>
+						</div>
+						<div>
+							<button disabled id="submit-button" class="cursor-pointer outline-none px-5 py-3 rounded-xl bg-white shadow-lg shadow-black transition-colors duration-200 hover:bg-amber-700 hover:text-white disabled:bg-gray-500 disabled:text-black">Submit</button>
+						</div>
+					</div>
+				</section>
+
+				<section id="restart-page" class="hidden">
+					<div class="flex flex-col gap-y-5 items-center">
+						<h2 id="game-message-container" class="text-7xl text-white text-shadow-lg text-shadow-black">Your Lose</h2>
+						<div class="flex justify-center gap-x-5">
+							<span id="correct-answer" class="text-white text-shadow-lg text-shadow-black">Correct answer 15</span>
+							<span id="player-answer" class="text-red-600 text-shadow-lg text-shadow-black">Your answer 10</span>
+						</div>
+						<div class="flex justify-center">
+							<button id="restart-button" class="cursor-pointer outline-none px-5 py-3 rounded-xl bg-white shadow-lg shadow-black transition-colors duration-200 hover:bg-amber-700 hover:text-white">Restart</button>
+						</div>	
+					</div>
+				</section>
+
+			</div>
+		</main>
+        <script src="./src/main.js" type="module"></script>
+    </body>
+</html>
