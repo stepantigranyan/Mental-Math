@@ -3,7 +3,7 @@ import drawPageTitle from '../title/drawPageTitle.js';
 import drawNavButton from '../buttons/drawNavButton.js';
 
 // Draw Landing Page
-const drawLandingPage = (fn) => {
+const drawLandingPage = (onStart) => {
     const wrapper = drawWrapper();
     const title = drawPageTitle('Mental Math');
 
@@ -13,7 +13,7 @@ const drawLandingPage = (fn) => {
 
     buttonContainer.append(button);
 
-    button.addEventListener('click', fn);
+    button.addEventListener('click', onStart);
 
     wrapper.append(title);
     wrapper.append(buttonContainer);

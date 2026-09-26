@@ -1,20 +1,30 @@
-import drawWrapper from "../wrapper/drawWrapper.js";
-import drawPageTitle from "../title/drawPageTitle.js";
-import drawNavButton from "../buttons/drawNavButton.js";
+import drawWrapper from '../wrapper/drawWrapper.js';
+import drawPageTitle from '../title/drawPageTitle.js';
+import drawNavButton from '../buttons/drawNavButton.js';
 
-const drawResultPage = (personAnswer, correctAnswer, fn) => {
+const drawResultPage = (personAnswer, correctAnswer, onRestart) => {
     const wrapper = drawWrapper();
-    const title = drawPageTitle(personAnswer === correctAnswer ? 'You win' : 'You lose');
+    const title = drawPageTitle(
+        personAnswer === correctAnswer ? 'You win' : 'You lose',
+    );
 
     const answersContainer = document.createElement('div');
     answersContainer.classList.add('flex', 'justify-center', 'gap-x-5');
 
-    const correctAnswerSpan = document.createElement("span");
-    correctAnswerSpan.classList.add('text-white', 'text-shadow-lg', 'text-shadow-black');
+    const correctAnswerSpan = document.createElement('span');
+    correctAnswerSpan.classList.add(
+        'text-white',
+        'text-shadow-lg',
+        'text-shadow-black',
+    );
     correctAnswerSpan.innerText = `Correct answer: ${correctAnswer}`;
 
-    const personsAnswerSpan = document.createElement("span");
-    personsAnswerSpan.classList.add(personAnswer === correctAnswer ? 'text-green-600' : 'text-red-600', 'text-shadow-lg', 'text-shadow-black');
+    const personsAnswerSpan = document.createElement('span');
+    personsAnswerSpan.classList.add(
+        personAnswer === correctAnswer ? 'text-green-600' : 'text-red-600',
+        'text-shadow-lg',
+        'text-shadow-black',
+    );
     personsAnswerSpan.innerText = `Your answer: ${personAnswer}`;
 
     const buttonContainer = document.createElement('div');
@@ -22,7 +32,7 @@ const drawResultPage = (personAnswer, correctAnswer, fn) => {
 
     const button = drawNavButton('restart-button', 'Restart');
 
-    button.addEventListener('click', fn);
+    button.addEventListener('click', onRestart);
 
     buttonContainer.append(button);
 
@@ -34,6 +44,6 @@ const drawResultPage = (personAnswer, correctAnswer, fn) => {
     wrapper.append(buttonContainer);
 
     return wrapper;
-}
+};
 
 export default drawResultPage;
