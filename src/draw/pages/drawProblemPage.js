@@ -1,46 +1,55 @@
-import drawWrapper from "../wrapper/drawWrapper.js";
+import drawWrapper from '../wrapper/drawWrapper.js';
 
 const timerMessage = ['Ready', 'Get Set', 'Go'];
 
-const runInterval = (duration, delay, callback) => {
-    return new Promise((resolve) => {
-        const start = Date.now();
-        const interval = setInterval(() => {
-            callback();
 
-            if(Date.now() - start >= duration) {
-                clearInterval(interval);
-                resolve();
-            }
-        }, delay)
-    });
+const sleep = (duration) => {
+    return new Promise((resolve) => setTimeout(resolve, duration));
 };
+
+const countDown = (container) => {
+    let i = 1;
+    container.innerText = timerMessage[0];
+
+    return setInterval(() => {
+        container.innerText = timerMessage[i++];
+    }, 1000);
+};
+
+const drawNumbers = (container, numbers, delay) => {
+    let i = 0;
+
+    return setInterval(() => {
+        container.classList.toggle('text-white');
+        container.classList.toggle('text-amber-500');
+        container.innerText = numbers[i++];
+    }, delay);
+};
+
+const runInterval = async (container, numbers, delay, navigate) => {
+    let inetvalId;
+
+    inetvalId = countDown(container);
+    await sleep(2000);
+    clearInterval(inetvalId);
+
+    inetvalId = drawNumbers(container, numbers, delay, navigate);
+    await sleep(numbers.length * delay);
+    clearInterval(inetvalId);
+
+    navigate();
+}
 
 const drawProblemPage = (settings, navigate) => {
     const numbers = settings.getNumbers();
     const interval = settings.getInterval();
-
-    let timerIndex = 0;
 
     const wrapper = drawWrapper();
 
     const numberContainer = document.createElement('span');
     numberContainer.classList.add('text-white', 'text-7xl');
 
-    runInterval(3000, 1000, () => {
-        numberContainer.innerText = `${timerMessage[timerIndex]}`;
-        timerIndex++;
-    }).then(() => {
-        let index = 0;
-        return runInterval((numbers.length + 1) * interval * 1000, interval * 1000, () => {
-            numberContainer.classList.toggle('text-white');
-            numberContainer.classList.toggle('text-amber-500');
-            numberContainer.innerText = `${numbers[index]}`;
-            index++;
-        });
-    }).then(() => {
-        navigate();
-    });
+    runInterval(numberContainer, numbers, interval, navigate);
 
     wrapper.append(numberContainer);
 

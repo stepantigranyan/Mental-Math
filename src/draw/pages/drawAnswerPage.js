@@ -1,9 +1,9 @@
 import drawWrapper from '../wrapper/drawWrapper.js';
 import drawPageTitle from '../title/drawPageTitle.js';
-import drawNavButton from "../buttons/drawNavButton.js";
+import drawNavButton from '../buttons/drawNavButton.js';
 
-const drawAnswerPage = (fn) => {
-    let answer = 0;
+const drawAnswerPage = (onSubmit) => {
+    let answer;
     const wrapper = drawWrapper();
     const title = drawPageTitle('Your answer');
 
@@ -23,31 +23,29 @@ const drawAnswerPage = (fn) => {
         'border-white',
         'border-solid',
         'rounded-xl',
-        'text-white'
+        'text-white',
     );
-
-    input.addEventListener('input', (event) => {
-        answer = event.target.value;
-    });
 
     const buttonContainer = document.createElement('div');
 
     const button = drawNavButton('submit-button', 'Submit');
     button.disabled = true;
 
-    input.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter' && answer !== '') {
-            fn(answer);
-        }
-    })
 
     input.addEventListener('input', (event) => {
         answer = event.target.value;
         button.disabled = answer === '';
+
+    });
+
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && answer !== '') {
+            onSubmit(answer);
+        }
     });
 
     button.addEventListener('click', () => {
-        fn(answer);
+        onSubmit(answer);
     });
 
     buttonContainer.append(button);
@@ -60,6 +58,6 @@ const drawAnswerPage = (fn) => {
     wrapper.append(buttonContainer);
 
     return wrapper;
-}
+};
 
 export default drawAnswerPage;
